@@ -1,14 +1,23 @@
 import React from 'react';
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import reducers from './data'
 import reportWebVitals from './reportWebVitals';
+
+const store = createStore(
+  reducers
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <React.Fragment>
+    <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
+  </React.Fragment>
 );
 
 // If you want to start measuring performance in your app, pass a function
